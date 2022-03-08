@@ -52,6 +52,7 @@ function loadPage(page, pageElement) {
 
 	loadRegions(page, pageElement);
 
+
 }
 
 // Zoom in / Zoom out

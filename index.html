@@ -236,6 +236,12 @@ function loadApp() {
 
 	});
 
+	// función que detecta cambios en la URL para ejecutar function sound()
+
+	$(window).bind('hashchange', function() {
+		console.log("estoy emitiendo sonido")
+	});
+
 	// Zoom.js
 
 	$('.magazine-viewport').zoom({
@@ -480,6 +486,8 @@ function loadApp() {
 	resizeViewport();
 
 	$('.magazine').addClass('animated');
+
+	
 
 }
 
