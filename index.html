@@ -13,7 +13,7 @@
 
 </head>
 <body>
-
+<div id="QR" style="position: absolute;"></div>
 <div id="canvas">
 
 <div class="zoom-icon zoom-icon-in"></div>
@@ -137,7 +137,6 @@
 newUrl = "petroleo"
 history.pushState({}, null, newUrl);
 
-
 function loadApp() {
 
  	$('#canvas').fadeIn(1000);
@@ -242,14 +241,38 @@ function loadApp() {
 	});
 
 	// función que detecta cambios en la URL para ejecutar function sound()
+	function pintarQr(){
+		html =  `<img src="extras/qr/QR.png" width="20%" alt="QR">`
+		$('#QR').fadeIn(1000).html(html)
+		console.log('estoy pintando en pantalla un codigo QR')
+	}
+	function despintarQr(){
+		html = []
+		$('#QR').html(html)
+	}
+
 	const sonido = new Audio('extras/sound/soundbook.mp3');
-    
+
+    getUrl()
 	$(window).bind('hashchange', function() {
 		console.log("estoy emitiendo sonido")
 		sonido.play();
-		
+		getUrl()
+        
 	});
 
+	function getUrl(){
+		//Se obtiene el valor de la URL desde el navegador
+		var actual = window.location+'';
+		console.log('estoy levantando la URL, ' + actual)
+
+		console.log(actual)
+		hojaActual = parseInt(actual.slice(-2))
+        
+		
+		if(hojaActual === 36) {pintarQr()}else{despintarQr()};
+	}
+	
 	// Zoom.js
 
 	$('.magazine-viewport').zoom({
