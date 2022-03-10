@@ -10,6 +10,7 @@
 <script type="text/javascript" src="./extras/jquery.min.1.7.js"></script>
 <script type="text/javascript" src="./extras/modernizr.2.5.3.min.js"></script>
 <script type="text/javascript" src="./lib/hash.js"></script>
+<link rel="stylesheet" href="./css/magazine.css">
 
 </head>
 <body>
@@ -248,7 +249,7 @@ function loadApp() {
 	}
 	function despintarQr(){
 		html = []
-		$('#QR').html(html)
+		$('#QR').fadeIn(1000).html(html)
 	}
 
 	const sonido = new Audio('extras/sound/soundbook.mp3');
@@ -267,8 +268,7 @@ function loadApp() {
 		console.log('estoy levantando la URL, ' + actual)
 
 		console.log(actual)
-		hojaActual = parseInt(actual.slice(-2))
-        
+		hojaActual = parseInt(actual.slice(-2)) 
 		
 		if(hojaActual === 36) {pintarQr()}else{despintarQr()};
 	}
