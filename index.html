@@ -242,9 +242,12 @@ function loadApp() {
 	});
 
 	// función que detecta cambios en la URL para ejecutar function sound()
-
+	const sonido = new Audio('extras/sound/soundbook.mp3');
+    
 	$(window).bind('hashchange', function() {
 		console.log("estoy emitiendo sonido")
+		sonido.play();
+		
 	});
 
 	// Zoom.js
