@@ -15,6 +15,7 @@
 </head>
 <body>
 <div id="QR" style="position: absolute;"></div>
+<div id="QR2" style="position: absolute;"></div>
 <div id="canvas">
 
 <div class="zoom-icon zoom-icon-in"></div>
@@ -250,27 +251,45 @@ function loadApp() {
 	function despintarQr(){
 		html = []
 		$('#QR').fadeIn(1000).html(html)
+		console.log('estoy despintando QR lastPage')
+	}
+
+	function pintarQr2(){
+		html =  `<img src="extras/qr/QR.png" width="20%" alt="QR">`
+		$('#QR2').fadeIn(1000).html(html);
+		console.log('estoy pintando en pantalla el codigo QR fistPage')
+	}
+	function despintarQr2(){
+		html = []
+		$('#QR2').fadeIn(1000).html(html);
+		console.log('estoy despintando el fistPage')
 	}
 
 	const sonido = new Audio('extras/sound/soundbook.mp3');
 
-    getUrl()
+    getUrlAndSwitch()
 	$(window).bind('hashchange', function() {
 		console.log("estoy emitiendo sonido")
 		sonido.play();
-		getUrl()
+		getUrlAndSwitch()
         
 	});
 
-	function getUrl(){
+	function getUrlAndSwitch(){
 		//Se obtiene el valor de la URL desde el navegador
 		var actual = window.location+'';
 		console.log('estoy levantando la URL, ' + actual)
 
 		console.log(actual)
-		hojaActual = parseInt(actual.slice(-2)) 
+		hojaLast = parseInt(actual.slice(36))
+        console.log("🚀 ~ file: index.html ~ line 284 ~ getUrlAndSwitch ~ hojaLast", hojaLast)
+		hojaFirst = parseInt(actual.slice(36)) 
 		
-		if(hojaActual === 36) {pintarQr()}else{despintarQr()};
+
+        console.log("🚀 ~ file: index.html ~ line 285 ~ getUrlAndSwitch ~ hojaFirst", hojaFirst)
+		
+		if(hojaLast === 36) {pintarQr()}else{despintarQr()};
+		if(hojaFirst === 1) {pintarQr2()}else{despintarQr2()};
 	}
 	
 	// Zoom.js
