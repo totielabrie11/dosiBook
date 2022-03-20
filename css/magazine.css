@@ -389,3 +389,7 @@ body{
 		display: none;
 	}
 }
+.catalogoText{
+	display: flex;
+	justify-content: center;
+}
