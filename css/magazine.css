@@ -395,3 +395,7 @@ body{
 	justify-content: center;
 	text-shadow: 1.5px 1px 1.5px white;
 }
+button {
+	margin-left: 10px;
+	background-color: rgb(240, 251, 73);
+}
